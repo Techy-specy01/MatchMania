@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #87ceeb, #b0e0e6);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.game-title {
+    font-size: 3rem;
+    color: #2d5016;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.game-stats {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.stat-item {
+    background: linear-gradient(145deg, #ffd700, #ffed4e);
+    padding: 10px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border: 2px solid #228b22;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #2d5016;
+    font-weight: bold;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    color: #1a4d0a;
+    font-weight: bold;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+    max-width: 500px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    border: 3px solid #228b22;
+}
+
+.card {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    cursor: pointer;
+    perspective: 1000px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    border-radius: 12px;
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border: 2px solid #228b22;
+}
+
+.card-front {
+    background: linear-gradient(145deg, #32cd32, #228b22);
+    color: white;
+    font-weight: bold;
+}
+
+.card-back {
+    background: linear-gradient(145deg, #ffff99, #ffd700);
+    transform: rotateY(180deg);
+}
+
+.card.matched {
+    opacity: 0.6;
+    transform: scale(0.95);
+}
+
+.card.matched:hover {
+    transform: scale(0.95);
+    cursor: default;
+}
+
+.controls {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.btn {
+    background: linear-gradient(145deg, #32cd32, #228b22);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+    margin: 0 10px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    background: linear-gradient(145deg, #228b22, #1a4d0a);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.win-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: linear-gradient(145deg, #ffd700, #ffed4e);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 3px solid #228b22;
+    text-align: center;
+    transition: transform 0.5s;
+    z-index: 1000;
+}
+
+.win-message.show {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.win-message h2 {
+    color: #2d5016;
+    margin-bottom: 15px;
+    font-size: 2rem;
+}
+
+.win-message p {
+    color: #1a4d0a;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+    .game-title {
+        font-size: 2rem;
+    }
+    
+    .game-board {
+        max-width: 350px;
+        grid-gap: 10px;
+        padding: 15px;
+    }
+    
+    .card {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .card-front, .card-back {
+        font-size: 2rem;
+    }
+    
+    .game-stats {
+        gap: 15px;
+    }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>Match Mania - Memory Card Game</title>
+</head>
+<body>
+    <div class="game-header">
+        <h1 class="game-title">🎮 Match Mania 🎮</h1>
+        <div class="game-stats">
+            <div class="stat-item">
+                <div class="stat-label">Moves</div>
+                <div class="stat-value" id="moves">0</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">Matches</div>
+                <div class="stat-value" id="matches">0/8</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">Time</div>
+                <div class="stat-value" id="timer">00:00</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-board" id="gameBoard"></div>
+
+    <div class="controls">
+        <button class="btn" onclick="startNewGame()">New Game</button>
+        <button class="btn" onclick="resetGame()">Reset</button>
+    </div>
+
+    <div class="win-message" id="winMessage">
+        <h2>🎉 Congratulations! 🎉</h2>
+        <p id="winText">You won in <span id="finalMoves">0</span> moves and <span id="finalTime">00:00</span>!</p>
+        <button class="btn" onclick="startNewGame()">Play Again</button>
+    </div>
